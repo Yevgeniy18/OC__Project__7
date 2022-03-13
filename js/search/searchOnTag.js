@@ -14,6 +14,9 @@ class SearchOnTag {
 
 
 		let newArrayOnSearch = []
+		const res = []
+
+	
 
 
 	}
