@@ -15,19 +15,19 @@ class RecipesList {
 			let recipeItem = this.recipes[i];
 
 			if (
-				removeAccents(recipeItem.name)
+				removeSpace(removeAccents(recipeItem.name))
 					.trim()
 					.toLowerCase()
-					.includes(this.searchedRecipe.trim().toLowerCase()) ||
-				removeAccents(recipeItem.description)
+					.includes(removeSpace(this.searchedRecipe).trim().toLowerCase()) ||
+				removeSpace(removeAccents(recipeItem.description))
 					.trim()
 					.toLowerCase()
-					.includes(this.searchedRecipe.trim().toLowerCase()) ||
+					.includes(removeSpace(this.searchedRecipe).trim().toLowerCase()) ||
 				recipeItem.ingredients.find((elt) =>
-					removeAccents(elt.ingredient)
+					removeSpace(removeAccents(elt.ingredient))
 						.trim()
 						.toLowerCase()
-						.includes(this.searchedRecipe.trim().toLowerCase())
+						.includes(removeSpace(this.searchedRecipe).trim().toLowerCase())
 				)
 			) {
 				recipesList.push(recipeItem);

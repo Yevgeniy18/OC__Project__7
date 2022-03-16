@@ -18,6 +18,8 @@ class RecipeCard {
 			})
 		);
 
+		
+
 		const recipeWrapper = document.createElement('article');
 		recipeWrapper.classList.add('recipe-card-wrapper');
 
@@ -37,7 +39,21 @@ class RecipeCard {
 				<p class="first"> ${ elt.ingredient }:</p> 
 				</br>
 				<p>${elt.quantity} </p>
-				<p>${elt.unit.slice(0,2)}</p> 
+				<p>${ elt.unit && elt.unit.includes("grammes".toLowerCase().trim())
+					? elt.unit.slice(0,1)
+				:elt.unit.toLowerCase().trim().includes("cl".toLowerCase().trim())
+					? elt.unit.slice(0,0)
+				:elt.unit.toLowerCase().trim().includes("Litres".toLowerCase().trim())
+					? elt.unit.slice(0,0)
+				:elt.unit.toLowerCase().trim().includes("sachets".toLowerCase().trim()) 
+					? elt.unit.slice(0,0)
+				:  elt.unit.toLowerCase().trim().includes("tranches".toLowerCase().trim())
+					? elt.unit.slice(0,1)
+				: elt.unit.toLowerCase().trim().includes("cuillères à soupe".toLowerCase().trim())
+					? elt.unit.slice(0,0)
+		
+					
+				:elt.unit}</p> 
 				</div>` : null
 			})
 			.join('')}
