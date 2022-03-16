@@ -39,6 +39,12 @@ header {
 	font-weight: 500;
 	position: relative;
 	z-index: 2;
+	transition: all 300ms;
+	border: 2px solid transparent;
+}
+
+.input-search-field:focus {
+	border: 2px solid #f1747c;
 }
 
 .icon-container {
@@ -65,10 +71,16 @@ header {
 	height: 364px;
 	width: 380px;
 	background: #e7e7e7;
-	margin: 0 0 1rem 0;
+	margin: 0 0 2em 0;
 	display: flex;
 	flex-direction: column;
 	border-radius: 5px;
+	cursor: pointer;
+	transition: all 300ms;
+}
+
+.recipe-card-wrapper:hover {
+	box-shadow: 0 5px 15px 0px rgb(90, 87, 87);
 }
 
 .first-container {
@@ -319,8 +331,8 @@ header {
 	border: none;
 }
 
-.dropdown-ingredients {
-	position: absolute;
+/* .dropdown-ingredients {
+	position: relative;
 	display: block;
 	top: 100%;
 	left: 0;
@@ -332,40 +344,42 @@ header {
 	transition: all 0.5s;
 	background-color: #3282f7;
 	z-index: 2;
-}
+
+} */
 
 .ingredients-trigger.open {
 	border-radius: 0px;
 }
 
-/* .dropdown-ingredients.open{
-
-} */
-
-/* .dropdown-ingredients.open {
-	opacity: 1;
-	visibility: visible;
-} */
-
-.ingredients-list.open {
+.ingredients-list {
 	position: absolute;
-	background-color: #3282f7;
-	height: 600px;
-	opacity: 1;
-	visibility: none;
-	padding: 10px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: wrap;
+	top: 100%;
+	right: 0;
+	left: 0;
+	width: 100%;
 	color: #fff;
+	display: none;
+	transition: 300ms all;
+	animation: grow-down 300ms ease-in-out both;
+	transform-origin: top center;
+	background-color: #3282f7;
+	overflow-x: scroll;
 	scroll-behavior: smooth;
-	overflow-y: scroll;
+	padding: 10px;
+	border-radius: 0 0 20px 20px;
 }
 
-.ingredients-list {
-	height: 0px;
-	opacity: 0;
+.ingredients-list::-webkit-scrollbar-track {
+	background-color: #3282f7;
+	border-radius: 0 0 20px 20px;
+}
+.ingredients-list::-webkit-scrollbar {
+	height: 15px;
+}
+
+.ingredients-list::-webkit-scrollbar-thumb {
+	background: #101e35;
+	border-radius: 20px;
 }
 
 .ingredients-list p {
@@ -374,11 +388,19 @@ header {
 	border: 1px solid transparent;
 }
 .ingredients-list p:hover {
-	border: 1px solid #fff;
+	background-color: #101e35;
+	border-radius: 5px;
+	color: white;
 }
 
 .ingredients-list.open {
 	opacity: 1;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	height: 450px;
 }
 
 .ingredients-tag {
@@ -397,6 +419,18 @@ header {
 
 .ingredient-list i {
 	margin-left: 1rem;
+}
+
+@keyframes grow-down {
+	0% {
+		transform: scaleY(0);
+	}
+	80% {
+		transform: scaleY(1.1);
+	}
+	100% {
+		transform: scaleY(1);
+	}
 }
 
 /**Appliance List***/
@@ -632,10 +666,14 @@ header {
 		padding: 0 10px;
 	}
 
+	.recipe-wrapper {
+		justify-content: center;
+	}
+
 	.tags-wrapper {
 		display: flex;
 		flex-direction: column;
-		justify-content: space-evenly;
+		justify-content: center;
 		align-items: center;
 	}
 	.ingredients-wrapper,

@@ -7,8 +7,6 @@ class Ingredients {
 
 	populateIngredients() {
 		let ingredientList = [];
-		let selectedTags = [];
-		// List with normalizd values
 		let normalizedList = [];
 
 		// filtering ingredients
@@ -23,53 +21,14 @@ class Ingredients {
 			}
 		});
 
-		const ingredientsData = `
-
-        ${normalizedList
+		const ingredientsData = 
+		` ${normalizedList
 			.map((ingredient) => {
-				return `<p>${ingredient} </p>`;
+				return `<p>${ingredient.charAt(0).toUpperCase() + ingredient.slice(1)}</p>`;
 			})
 			.join(' ')}
-        
-        
         `;
 
 		this.ingredientList.innerHTML = ingredientsData;
-
-		// Selecting and adding tag to the the selected area
-
-		const addTagToList = (e) => {
-			let selectedTag = e.target.innerHTML;
-			selectedTags.push(selectedTag);
-			// Adding tags to DOM
-
-			const listSelectedTags = `
-        
-        ${selectedTags
-			.map((tag) => {
-				return `<div class="ingredients-tag"> 
-                ${tag}
-                </div>`;
-			})
-			.join(" ")}`;
-
-			this.selectedTags.innerHTML = listSelectedTags;
-			new RemoveTags(selectedTags).removeIngredient()
-			new SearchOnTag({recipes:this.recipes, selected: selectedTag}).displayOnTag()
-		
-			
-	
-	
-		};
-
-		for (let ingredient of this.ingredientList.children) {
-			ingredient.addEventListener('click', addTagToList);
-		}
-
-
-
-		
-	
-	
 	}
 }

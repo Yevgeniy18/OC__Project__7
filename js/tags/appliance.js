@@ -1,5 +1,10 @@
 class Appliance{
-    constructor(){
+    constructor(data){
         
+    }
+
+    populateAppliance(){
+
+
     }
 }

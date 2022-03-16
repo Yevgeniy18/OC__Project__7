@@ -1,6 +1,10 @@
 class Ustensils{
-    constructor(){
+    constructor(data){
 
         
+    }
+
+    populateUstensils(){
+
     }
 }
