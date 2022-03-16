@@ -22,14 +22,7 @@ class App {
 		new ExpandingContainers().handleTagDropDowns();
 
 		/***Tags**/
-		new Ingredients(RecipesData).populateIngredients()
-
-		/****Tags Data****/
-		// new Tags(RecipesData).populateTagContainers();
-		// new TagSearch(RecipesData).onInputFilter();
-		// new SearchOnTag({recipes: RecipesData}).displayOnTag()
-
-		// new SelectTag(RecipesData).selectingTagsHandler();
+		new Ingredients(RecipesData).populateIngredients();
 	}
 }
 
