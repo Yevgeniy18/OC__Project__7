@@ -9,6 +9,8 @@ class ExpandingContainers {
 
 		// Containers
 		this.ingredientContainer = document.querySelector('.ingredients-list')
+		this.applianceContainer = document.querySelector('.appliance-list')
+		this.ustensilsContainer = document.querySelector('.ustensils-list')
 
 		/****Triggers***/
 		this.ingredientTrigger = document.querySelector('.ingredients-trigger');
@@ -45,25 +47,27 @@ class ExpandingContainers {
 
 		this.ingredientArrow.addEventListener('click', handleIngredients);
 
-		// const handleAppliances = () => {
+		const handleAppliances = () => {
 	
-		// 	this.toolsTrigger.classList.toggle('open');
-		// 	this.tools.classList.toggle('open-tools');
-		// 	this.tagTools.classList.toggle('open');
-		// 	this.inputFieldTools.classList.toggle('open');
-		// };
+			this.toolsTrigger.classList.toggle('open');
+			this.tools.classList.toggle('open-appliance');
+			this.tagTools.classList.toggle('open');
+			this.inputFieldTools.classList.toggle('open');
+			this.applianceContainer.classList.toggle('open')
+		};
 
-		// this.applianceArrow.addEventListener('click', handleAppliances);
+		this.applianceArrow.addEventListener('click', handleAppliances);
 
-		// const handleUstensils = () => {
+		const handleUstensils = () => {
 
 		
-		// 	this.ustensils.classList.toggle('open-ustensils');
-		// 	this.ustensilsTrigger.classList.toggle('open');
-		// 	this.tagUstensils.classList.toggle('open');
-		// 	this.inputFieldIUstensils.classList.toggle('open');
-		// };
+			this.ustensils.classList.toggle('open-ustensils');
+			this.ustensilsTrigger.classList.toggle('open');
+			this.tagUstensils.classList.toggle('open');
+			this.inputFieldIUstensils.classList.toggle('open');
+			this.ustensilsContainer.classList.toggle('open')
+		};
 
-		// this.ustensilsArrow.addEventListener('click', handleUstensils);
+		this.ustensilsArrow.addEventListener('click', handleUstensils);
 	}
 }

@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    
+
     <!-- Selected Tags Container -->
     <div id="selected-tags" class="selected-tags"></div>
 
@@ -43,13 +43,12 @@
               placeholder="Rechercher un ingredient" />
             <div id="ingredient-arrow" class="arrow"></div>
           </div>
-
-
-            <div class="ingredients-list">
-            </div>
-     
+          <div class="ingredients-list">
+          </div>
         </div>
       </div>
+
+
 
       <div class="appliance-wrapper">
         <div class="select-drop">
@@ -58,6 +57,11 @@
             <input maxlength="25" type="text" class="input__field__appliance" placeholder="Rechercher un appareil" />
             <div id="appliance-arrow" class="arrow"></div>
           </div>
+
+          <div class="appliance-list">
+
+          </div>
+
         </div>
       </div>
 
@@ -70,8 +74,11 @@
             <input maxlength="25" type="text" class="input__field__ustensils" placeholder="Rechercher un unstensil" />
             <div id="ustensils-arrow" class="arrow"></div>
           </div>
-        </div> 
-    </div>
+          <div class="ustensils-list">
+
+          </div>
+        </div>
+      </div>
     </div>
     </div>
 
@@ -83,6 +90,8 @@
     <script src="./js/components/dropDowns.js"></script>
     <!-- Tags Data -->
     <script src="./js/components/tagBoxes.js"></script>
+    <script src="./js/searchAdvance/removingTags.js"></script>
+    <script src="./js/searchAdvance/displayTags.js"></script>
 
     <!-- Tags -->
     <script src="./js/tags/ingredients.js"></script>
@@ -101,6 +110,7 @@
     <!-- Helpers -->
     <script src="./js/helpers/duplicatesRemoved.js"></script>
     <script src="./js/helpers/removeAccents.js"></script>
+    <script src="./js/helpers/removeSpace.js"></script>
 
     <!-- Search Tags -->
     <script src="./js/components/tagSearch.js"></script>

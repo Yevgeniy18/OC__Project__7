@@ -13,19 +13,19 @@ class RecipesList {
 		this.recipes
 			.filter(
 				(recipe) =>
-					removeAccents(recipe.name)
+					removeSpace(removeAccents(recipe.name))
 						.trim()
 						.toLowerCase()
-						.includes(this.searchedRecipe.trim().toLowerCase()) ||
-					removeAccents(recipe.description)
+						.includes(removeSpace(this.searchedRecipe).trim().toLowerCase()) ||
+					removeSpace(removeAccents(recipe.description))
 						.trim()
 						.toLowerCase()
-						.includes(this.searchedRecipe.trim().toLowerCase()) ||
+						.includes(removeSpace(this.searchedRecipe).trim().toLowerCase()) ||
 					recipe.ingredients.find((elt) =>
-						removeAccents(elt.ingredient)
+						removeSpace(removeAccents(elt.ingredient))
 							.trim()
 							.toLowerCase()
-							.includes(this.searchedRecipe.trim().toLowerCase())
+							.includes(removeSpace(this.searchedRecipe).trim().toLowerCase())
 					)
 			)
 			.forEach((recipe) => {
@@ -33,52 +33,52 @@ class RecipesList {
 				this.recipesWrapper.appendChild(Template.createRecipeCard());
 			});
 
-		function returnWithFilter(array, selected) {
-			return array.filter(
-				(recipe) =>
-					recipe.ingredients.find((elt) =>
-						elt.ingredient.toLowerCase().includes(selected.trim().toLowerCase())
-					) ||
-					recipe.description.trim().toLowerCase().includes(selected.trim().toLowerCase()) ||
-					recipe.name.trim().toLowerCase().includes(selected.trim().toLowerCase())
-			);
-		}
+		// function returnWithFilter(array, selected) {
+		// 	return array.filter(
+		// 		(recipe) =>
+		// 			recipe.ingredients.find((elt) =>
+		// 				elt.ingredient.toLowerCase().includes(selected.trim().toLowerCase())
+		// 			) ||
+		// 			recipe.description.trim().toLowerCase().includes(selected.trim().toLowerCase()) ||
+		// 			recipe.name.trim().toLowerCase().includes(selected.trim().toLowerCase())
+		// 	);
+		// }
 
-		function returWithForEach(array, selected) {
-			let newArray = [];
+		// function returWithForEach(array, selected) {
+		// 	let newArray = [];
 
-			array.forEach((recipe) => {
-				if (
-					recipe.ingredients.find((elt) =>
-						elt.ingredient.toLowerCase().includes(selected.trim().toLowerCase())
-					) ||
-					recipe.description.trim().toLowerCase().includes(selected.trim().toLowerCase()) ||
-					recipe.name.trim().toLowerCase().includes(selected.trim().toLowerCase)
-				) {
-					newArray.push(recipe);
-				}
-			});
+		// 	array.forEach((recipe) => {
+		// 		if (
+		// 			recipe.ingredients.find((elt) =>
+		// 				elt.ingredient.toLowerCase().includes(selected.trim().toLowerCase())
+		// 			) ||
+		// 			recipe.description.trim().toLowerCase().includes(selected.trim().toLowerCase()) ||
+		// 			recipe.name.trim().toLowerCase().includes(selected.trim().toLowerCase)
+		// 		) {
+		// 			newArray.push(recipe);
+		// 		}
+		// 	});
 
-			return newArray;
-		}
+		// 	return newArray;
+		// }
 
-		function ReduceResult(array, selected) {
-			let result = array.reduce((newArray, current) => {
-				if (
-					current.ingredients.find((elt) =>
-						elt.ingredient.toLowerCase().includes(selected.trim().toLowerCase())
-					) ||
-					current.name.trim().toLowerCase().includes(selected.trim().toLowerCase()) ||
-					current.description.trim().toLowerCase().includes(selected.trim().toLowerCase())
-				) {
-					newArray.push(current);
-				}
+		// function ReduceResult(array, selected) {
+		// 	let result = array.reduce((newArray, current) => {
+		// 		if (
+		// 			current.ingredients.find((elt) =>
+		// 				elt.ingredient.toLowerCase().includes(selected.trim().toLowerCase())
+		// 			) ||
+		// 			current.name.trim().toLowerCase().includes(selected.trim().toLowerCase()) ||
+		// 			current.description.trim().toLowerCase().includes(selected.trim().toLowerCase())
+		// 		) {
+		// 			newArray.push(current);
+		// 		}
 
-				return newArray;
-			}, []);
+		// 		return newArray;
+		// 	}, []);
 
-			return result;
-		}
+		// 	return result;
+		// }
 	}
 
 	async ShowInitialList() {
@@ -94,20 +94,6 @@ class RecipesList {
 		this.searchField.addEventListener('input', (e) => {
 			this.searchedRecipe = e.target.value;
 
-
-			let doesContain = this.recipes.filter(
-				(recipe) =>
-					removeAccents(recipe.name)
-						.trim()
-						.toLowerCase()
-						.includes(this.searchedRecipe.trim().toLowerCase()) ||
-					removeAccents(recipe.description)
-						.trim()
-						.toLowerCase()
-						.includes(this.searchedRecipe.trim().toLowerCase()) ||
-					recipe.ingredients.map((elt) => removeAccents(elt.ingredient).trim().toLowerCase())
-			);
-
 			const doesContainWord = () => {
 				let result = [];
 
@@ -120,25 +106,19 @@ class RecipesList {
 				return result;
 			};
 
-
-			let requestHasWord = doesContainWord().includes(this.searchedRecipe.trim().toLowerCase())
-	
-
-			// doesContain.find(elt => removeAccents(elt.name).trim().toLowerCase().includes)
+			let requestHasWord = doesContainWord().includes(this.searchedRecipe.trim().toLowerCase());
 
 			if (this.searchedRecipe.length > 3) {
 				this.ShowAvailbaleRecipes();
 			} else if (this.searchedRecipe.length < 3) {
 				this.ShowInitialList();
-			}  
+			}
 
-			if( !requestHasWord  && this.searchedRecipe.length > 10){
-				console.log('something is wrong with your surh')
-			} 
-
-		//  else {
-		// 		return;
-		// 	}
+			if (!requestHasWord && this.searchedRecipe.length > 15) {
+				new Message().notFound();
+			} else {
+				new Message().initial()
+			}
 		});
 	}
 }
