@@ -7,78 +7,41 @@ class RecipesList {
 		this.recipes = recipe;
 	}
 
-	async ShowAvailbaleRecipes() {
+	ShowAvailbaleRecipes() {
 		this.recipesWrapper.innerHTML = '';
 
-		this.recipes
-			.filter(
-				(recipe) =>
-					removeSpace(removeAccents(recipe.name))
+		let filteredRes = this.recipes.filter(
+			(recipe) =>
+				removeSpace(removeAccents(recipe.name))
+					.trim()
+					.toLowerCase()
+					.includes(removeSpace(this.searchedRecipe).trim().toLowerCase()) ||
+				removeSpace(removeAccents(recipe.description))
+					.trim()
+					.toLowerCase()
+					.includes(removeSpace(this.searchedRecipe).trim().toLowerCase()) ||
+				recipe.ingredients.find((elt) =>
+					removeSpace(removeAccents(elt.ingredient))
 						.trim()
 						.toLowerCase()
-						.includes(removeSpace(this.searchedRecipe).trim().toLowerCase()) ||
-					removeSpace(removeAccents(recipe.description))
-						.trim()
-						.toLowerCase()
-						.includes(removeSpace(this.searchedRecipe).trim().toLowerCase()) ||
-					recipe.ingredients.find((elt) =>
-						removeSpace(removeAccents(elt.ingredient))
-							.trim()
-							.toLowerCase()
-							.includes(removeSpace(this.searchedRecipe).trim().toLowerCase())
-					)
-			)
-			.forEach((recipe) => {
-				const Template = new RecipeCard(recipe);
-				this.recipesWrapper.appendChild(Template.createRecipeCard());
-			});
+						.includes(removeSpace(this.searchedRecipe).trim().toLowerCase())
+				)
+		);
 
-		// function returnWithFilter(array, selected) {
-		// 	return array.filter(
-		// 		(recipe) =>
-		// 			recipe.ingredients.find((elt) =>
-		// 				elt.ingredient.toLowerCase().includes(selected.trim().toLowerCase())
-		// 			) ||
-		// 			recipe.description.trim().toLowerCase().includes(selected.trim().toLowerCase()) ||
-		// 			recipe.name.trim().toLowerCase().includes(selected.trim().toLowerCase())
-		// 	);
-		// }
+		// Adding advanced searches funtionality for the remaining results after filter
 
-		// function returWithForEach(array, selected) {
-		// 	let newArray = [];
+		if (filteredRes.length > 1) {
+			new TagsSection(this.recipes).populateTagsReaminder(filteredRes)
+		}
 
-		// 	array.forEach((recipe) => {
-		// 		if (
-		// 			recipe.ingredients.find((elt) =>
-		// 				elt.ingredient.toLowerCase().includes(selected.trim().toLowerCase())
-		// 			) ||
-		// 			recipe.description.trim().toLowerCase().includes(selected.trim().toLowerCase()) ||
-		// 			recipe.name.trim().toLowerCase().includes(selected.trim().toLowerCase)
-		// 		) {
-		// 			newArray.push(recipe);
-		// 		}
-		// 	});
+		if (filteredRes.length === 0){
+			new TagsSection(this.recipes).populateTags()
+		}
 
-		// 	return newArray;
-		// }
-
-		// function ReduceResult(array, selected) {
-		// 	let result = array.reduce((newArray, current) => {
-		// 		if (
-		// 			current.ingredients.find((elt) =>
-		// 				elt.ingredient.toLowerCase().includes(selected.trim().toLowerCase())
-		// 			) ||
-		// 			current.name.trim().toLowerCase().includes(selected.trim().toLowerCase()) ||
-		// 			current.description.trim().toLowerCase().includes(selected.trim().toLowerCase())
-		// 		) {
-		// 			newArray.push(current);
-		// 		}
-
-		// 		return newArray;
-		// 	}, []);
-
-		// 	return result;
-		// }
+		filteredRes.forEach((recipe) => {
+			const Template = new RecipeCard(recipe);
+			this.recipesWrapper.appendChild(Template.createRecipeCard());
+		});
 	}
 
 	async ShowInitialList() {
@@ -93,6 +56,9 @@ class RecipesList {
 	onInputSearch() {
 		this.searchField.addEventListener('input', (e) => {
 			this.searchedRecipe = e.target.value;
+
+			// Checking if the searched recipe contains a result
+			// if not, an error message will be displayed in the main section
 
 			const doesContainWord = () => {
 				let result = [];
@@ -110,6 +76,7 @@ class RecipesList {
 
 			if (this.searchedRecipe.length > 3) {
 				this.ShowAvailbaleRecipes();
+	
 			} else if (this.searchedRecipe.length < 3) {
 				this.ShowInitialList();
 			}
@@ -117,7 +84,7 @@ class RecipesList {
 			if (!requestHasWord && this.searchedRecipe.length > 15) {
 				new Message().notFound();
 			} else {
-				new Message().initial()
+				new Message().initial();
 			}
 		});
 	}

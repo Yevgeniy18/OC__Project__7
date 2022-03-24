@@ -2,8 +2,6 @@ class RemovingTags {
 	constructor(data) {
 		this.selectedList = data;
 		this.selectedTagsList = document.querySelector('.selected-tags');
-
-	
 	}
 
 	removingAction(tagList) {
@@ -15,14 +13,10 @@ class RemovingTags {
 			for (let i = 0; i < tagList.length; i++) {
 				if (tagList[i] === tag) {
 					tagList.splice(i, 1);
-					
 				}
 			}
 
-			new DisplayTags(tagList)
-		
-
-		
+			new DisplayTags(tagList);
 		};
 
 		for (let elt of this.selectedTagsList.children) {

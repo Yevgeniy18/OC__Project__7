@@ -17,5 +17,7 @@ class Message {
 
 	initial() {
 		this.recipesWrapper.style.justifyContent = 'space-between';
+		this.recipesWrapper.style.minHeight = '100vh';
+		this.recipesWrapper.style.alignItems = 'baseline';
 	}
 }

@@ -1,7 +1,10 @@
-class SearchOnTag {
+class SearchRemainder {
 	constructor(data) {
-		this.recipesWrapper = document.querySelector('.recipe-wrapper');
 		this.recipes = data.recipes;
+
+		console.log(this.recipes);
+
+		this.recipesWrapper = document.querySelector('.recipe-wrapper');
 		this.selectedList = removeDuplicates(data.selectedTags);
 	}
 

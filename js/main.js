@@ -5,29 +5,23 @@ class App {
 	}
 
 	async run() {
-		/*****Recipes Data From Json*****/
+		// Data
 		const RecipesData = await this.recipesApi.get();
 
-		/*****Initial List of recipes */
+		// Recipes List
 		RecipesData.map((recipe) => new Recipe(recipe)).forEach((recipe) => {
 			const Template = new RecipeCard(recipe);
 			this.recipeWrapper.appendChild(Template.createRecipeCard());
 		});
 
-		/***Filtered List of Recipes***/
-
+		// Main Search
 		new RecipesList(RecipesData).onInputSearch();
 
-		/****Dropdowns****/
+		// Dropdowns
 		new ExpandingContainers().handleTagDropDowns();
 
-		/***Tags**/
-		new Ingredients(RecipesData).populateIngredients();
-		new Appliance(RecipesData).populateAppliance()
-		new Ustensils(RecipesData).populateUstensils()
-
-		//Advanced Search Area
-
+		// Advanced Search
+		new TagsSection(RecipesData).populateTags()
 		
 	}
 }
