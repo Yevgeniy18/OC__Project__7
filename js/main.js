@@ -1,6 +1,6 @@
 class App {
 	constructor() {
-		this.recipesApi = new DishesApi('/data/plats.json');
+		this.recipesApi = new DishesApi('../data/plats.json');
 		this.recipeWrapper = document.querySelector('.recipe-wrapper');
 	}
 
