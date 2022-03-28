@@ -31,11 +31,11 @@ class RecipesList {
 		// Adding advanced searches funtionality for the remaining results after filter
 
 		if (filteredRes.length > 1) {
-			new TagsSection(this.recipes).populateTagsReaminder(filteredRes)
+			new TagsSection(this.recipes).populateTagsReaminder(filteredRes);
 		}
 
-		if (filteredRes.length === 0){
-			new TagsSection(this.recipes).populateTags()
+		if (filteredRes.length === 0) {
+			new TagsSection(this.recipes).populateTags();
 		}
 
 		filteredRes.forEach((recipe) => {
@@ -44,7 +44,7 @@ class RecipesList {
 		});
 	}
 
-	async ShowInitialList() {
+	ShowInitialList() {
 		this.recipesWrapper.innerHTML = '';
 
 		this.recipes.map((recipe) => new Recipe(recipe)).forEach((recipe) => {
@@ -76,7 +76,6 @@ class RecipesList {
 
 			if (this.searchedRecipe.length > 3) {
 				this.ShowAvailbaleRecipes();
-	
 			} else if (this.searchedRecipe.length < 3) {
 				this.ShowInitialList();
 			}

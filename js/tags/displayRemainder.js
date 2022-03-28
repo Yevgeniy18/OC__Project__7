@@ -1,4 +1,4 @@
-class DisplaySelectedTags {
+class DisplayRemainder {
 	constructor(data) {
 		this.recipes = data.recipes;
 		this.selectedTags = data.selected;
@@ -25,21 +25,22 @@ class DisplaySelectedTags {
 						? 'applianceTag'
 						: ingredientsList.includes(elt)
 							? 'ingredientTag'
-							: 'noTag'}>${elt} <button> <i class="fa-solid fa-xmark"></i></button></p>`;
+							: 'noTag'}>${elt} <button><i class="fa-solid fa-xmark"></i> </button></p>`;
 			})
 			.join(' ')}
 		`;
 		this.selectedArea.innerHTML = listedTags;
 
+
 		const removeTag = (e) => {
 			const tag = e.target.parentNode.parentNode.textContent;
-
 			for (let i = 0; i < this.selectedTags.length; i++) {
 				if (this.selectedTags[i] === tag.trim()) {
 					this.selectedTags.splice(i, 1);
 				}
 			}
 
+			
 			for (let i = 0; i < this.ingredientContainer.children.length; i++) {
 				if (this.ingredientContainer.children[i].innerHTML === tag.trim()) {
 					this.ingredientContainer.children[i].style.display = 'flex';
@@ -56,8 +57,8 @@ class DisplaySelectedTags {
 				}
 			}
 
-			new SearchOnTag({ selected: this.selectedTags, recipes: this.recipes }).displayOnTag();
-			new DisplaySelectedTags({ selected: this.selectedTags, recipes: this.recipes }).listingTags();
+			new SearchRemainder({ selected: this.selectedTags, recipes: this.recipes }).displayOnTag();
+			new DisplayRemainder({ selected: this.selectedTags, recipes: this.recipes }).listingTags();
 		};
 
 		for (let tag of this.selectedArea.children) {

@@ -1,6 +1,7 @@
 class TagsSection {
 	constructor(data) {
-		this.data = data;
+
+		this.recipes = data
 		//List Conatianers
 		this.ingredientContainer = document.querySelector('.ingredients-list');
 		this.applianceContainer = document.querySelector('.appliance-list');
@@ -8,12 +9,10 @@ class TagsSection {
 
 		//List of selectedTags
 		this.selectedTags = document.querySelector('.selected-tags');
-
-		// CombinedTag
-		this.combineSelected = [];
 	}
 
-	populateTags() {
+	populateTags(data) {
+		let recipesData = data;
 		//Ingredients
 		let ingrediensList = [];
 		let normalizedIngredients = [];
@@ -24,7 +23,9 @@ class TagsSection {
 		let ustensilsList = [];
 		let normalizedUstensils = [];
 
-		this.data.filter((recipe) => {
+		// Populating Tag containers with data bein properly formatted
+
+		this.recipes.filter((recipe) => {
 			recipe.ingredients.map((ingredient) => ingrediensList.push(ingredient.ingredient));
 		});
 
@@ -39,7 +40,7 @@ class TagsSection {
 
 		this.ingredientContainer.innerHTML = ingredientsData;
 
-		this.data.filter((recipe) => applianceList.push(recipe.appliance));
+		this.recipes.filter((recipe) => applianceList.push(recipe.appliance));
 		normalizedAppliance = removeDuplicates(applianceList);
 
 		const applianceData = ` ${normalizedAppliance
@@ -51,7 +52,7 @@ class TagsSection {
 
 		this.applianceContainer.innerHTML = applianceData;
 
-		this.data.filter((recipe) => {
+		this.recipes.filter((recipe) => {
 			recipe.ustensils.map((ustensil) => ustensilsList.push(ustensil));
 		});
 
@@ -66,32 +67,38 @@ class TagsSection {
 
 		this.ustensilsContainer.innerHTML = ustensilData;
 
+		// Adding tags to selected list which then will be transferred
+		// to classes responsible for search and display functions
+
+		let selectedList = [];
+
 		const addToList = (e) => {
 			const tag = e.target.innerHTML;
-			const tagEl = e.target;
-			tagEl.style.display = 'none';
-			this.combineSelected.push(tag);
-			new SearchOnTag({ recipes: this.data, selectedTags: this.combineSelected }).displayOnTag();
-			new DisplaySelectedTags({ recipes: this.data, selectedTags: this.combineSelected }).listingTags();
-			new RemoveTag({ selectedTags: this.combineSelected }).tagsSelected();
+			const el = e.target
+			el.style.display = "none"
+			selectedList.push(tag);
+
+			new SearchOnTag({ recipes: recipesData, selected: selectedList }).displayOnTag();
+			new DisplaySelectedTags({ recipes: recipesData, selected: selectedList }).listingTags();
 		};
 
-		for (let ingredient of this.ingredientContainer.children) {
-			ingredient.addEventListener('click', addToList);
+		for (let tag of this.ingredientContainer.children) {
+			tag.addEventListener('click', addToList);
 		}
 
-		for (let appliance of this.applianceContainer.children) {
-			appliance.addEventListener('click', addToList);
+		for (let tag of this.applianceContainer.children) {
+			tag.addEventListener('click', addToList);
 		}
 
-		for (let ustensil of this.ustensilsContainer.children) {
-			ustensil.addEventListener('click', addToList);
+		for (let tag of this.ustensilsContainer.children) {
+			tag.addEventListener('click', addToList);
 		}
 	}
 
 	populateTagsReaminder(data) {
-		const remainingRecipes = data;
-		console.log(remainingRecipes);
+		// Recipes Data
+		let remainderData = data;
+
 		//Ingredients
 		let ingrediensList = [];
 		let normalizedIngredients = [];
@@ -102,22 +109,24 @@ class TagsSection {
 		let ustensilsList = [];
 		let normalizedUstensils = [];
 
-		this.data.filter((recipe) => {
+		// Populating Tag containers with data bein properly formatted
+
+		remainderData.filter((recipe) => {
 			recipe.ingredients.map((ingredient) => ingrediensList.push(ingredient.ingredient));
 		});
 
 		normalizedIngredients = removeDuplicates(ingrediensList);
 
 		const ingredientsData = ` ${normalizedIngredients
-			.map((appliance) => {
-				return `<p>${appliance.charAt(0).toUpperCase() + appliance.slice(1)}</p>`;
+			.map((ingredient) => {
+				return `<p >${ingredient.charAt(0).toUpperCase() + ingredient.slice(1)}</p>`;
 			})
 			.join(' ')}
 				`;
 
 		this.ingredientContainer.innerHTML = ingredientsData;
 
-		this.data.filter((recipe) => applianceList.push(recipe.appliance));
+		remainderData.filter((recipe) => applianceList.push(recipe.appliance));
 		normalizedAppliance = removeDuplicates(applianceList);
 
 		const applianceData = ` ${normalizedAppliance
@@ -129,7 +138,7 @@ class TagsSection {
 
 		this.applianceContainer.innerHTML = applianceData;
 
-		this.data.filter((recipe) => {
+		remainderData.filter((recipe) => {
 			recipe.ustensils.map((ustensil) => ustensilsList.push(ustensil));
 		});
 
@@ -137,34 +146,39 @@ class TagsSection {
 
 		const ustensilData = ` ${normalizedUstensils
 			.map((ustensil) => {
-				return `<p>${ustensil.charAt(0).toUpperCase() + ustensil.slice(1)}</p>`;
+				return `<p >${ustensil.charAt(0).toUpperCase() + ustensil.slice(1)}</p>`;
 			})
 			.join(' ')}
 				`;
 
 		this.ustensilsContainer.innerHTML = ustensilData;
 
+		// Fromatting done
+
+		// Adding tags to selected list which then will be transferred
+		// to classes responsible for search and display functions
+
+		let selectedList = [];
+
 		const addToList = (e) => {
 			const tag = e.target.innerHTML;
-			const tagEl = e.target;
-			tagEl.style.display = 'none';
-			this.combineSelected.push(tag);
-			console.log(this.combineSelected);
-			new SearchRemainder({ recipes: remainingRecipes, selectedTags: this.combineSelected }).displayOnTag();
-			new DisplaySelectedTags({ recipes: remainingRecipes, selectedTags: this.combineSelected }).listingTags();
-	
+			const el = e.target
+			el.style.display = "none"
+			selectedList.push(tag);
+
+			new SearchOnTag({ recipes: remainderData, selected: selectedList }).displayOnTag();
+			new DisplayRemainder({ recipes: remainderData, selected: selectedList }).listingTags();
 		};
-
-		for (let ingredient of this.ingredientContainer.children) {
-			ingredient.addEventListener('click', addToList);
+		for (let tag of this.ingredientContainer.children) {
+			tag.addEventListener('click', addToList);
 		}
 
-		for (let appliance of this.applianceContainer.children) {
-			appliance.addEventListener('click', addToList);
+		for (let tag of this.applianceContainer.children) {
+			tag.addEventListener('click', addToList);
 		}
 
-		for (let ustensil of this.ustensilsContainer.children) {
-			ustensil.addEventListener('click', addToList);
+		for (let tag of this.ustensilsContainer.children) {
+			tag.addEventListener('click', addToList);
 		}
 	}
 }

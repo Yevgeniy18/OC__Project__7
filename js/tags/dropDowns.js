@@ -1,7 +1,6 @@
 class ExpandingContainers {
 	constructor() {
 		
-
 		// Arrows 
 		this.ingredientArrow = document.getElementById('ingredient-arrow')
 		this.applianceArrow = document.getElementById('appliance-arrow')

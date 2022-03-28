@@ -13,7 +13,6 @@ class App {
 			const Template = new RecipeCard(recipe);
 			this.recipeWrapper.appendChild(Template.createRecipeCard());
 		});
-
 		// Main Search
 		new RecipesList(RecipesData).onInputSearch();
 
@@ -21,8 +20,7 @@ class App {
 		new ExpandingContainers().handleTagDropDowns();
 
 		// Advanced Search
-		new TagsSection(RecipesData).populateTags()
-		
+		new TagsSection(RecipesData).populateTags(RecipesData);
 	}
 }
 

@@ -79,7 +79,6 @@ header {
 	border-radius: 5px;
 	cursor: pointer;
 	transition: all 300ms;
-	
 }
 
 .recipe-card-wrapper:hover {
@@ -213,15 +212,11 @@ header {
 	margin: 1rem 0;
 }
 
-.selected-tags li {
-	list-style: none;
+.selected-tags p {
 	margin: 0rem 1rem 1rem 0rem;
-	padding: 10px;
-	
 }
 
-.selected-tags i{
-	margin-left: 1rem;
+.selected-tags i {
 	border: 2px solid white;
 	width: 25px;
 	height: 25px;
@@ -734,7 +729,20 @@ header {
 	border-radius: 5px;
 	color: white;
 	display: flex;
+	align-items: center;
+	padding: 7px;
+}
+
+.ustensilsTag button {
+	background: transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	outline: none;
+	border: none;
 	cursor: pointer;
+	margin-left: 1rem;
+	color: #fff;
 }
 
 .ingredientTag {
@@ -742,14 +750,42 @@ header {
 	border-radius: 5px;
 	color: white;
 	display: flex;
-	cursor: pointer;
+	align-items: center;
+	padding: 7px;
 }
+
+.ingredientTag button {
+	background: transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	outline: none;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	margin-left: 1rem;
+}
+
 .applianceTag {
 	background-color: #68d9a4;
 	border-radius: 5px;
 	color: white;
 	display: flex;
+	align-items: center;
+	padding: 7px;
+	color: #fff;
+}
+
+.applianceTag button {
+	background: transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	outline: none;
+	border: none;
+	color: #fff;
 	cursor: pointer;
+	margin-left: 1rem;
 }
 
 .noTag {
