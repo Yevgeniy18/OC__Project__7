@@ -752,7 +752,6 @@ header {
 	display: flex;
 	align-items: center;
 	padding: 7px;
-		
 }
 
 .ingredientTag button {
@@ -765,7 +764,6 @@ header {
 	color: #fff;
 	cursor: pointer;
 	margin-left: 1rem;
-
 }
 
 .applianceTag {
@@ -822,50 +820,34 @@ header {
 
 	/***Ingredients**/
 
-
-	.ingredients-wrapper.open-ingredients{
+	.ingredients-wrapper.open-ingredients {
 		width: 100%;
 		height: 300px;
-
 	}
 
-	.ingredients-list.open{
+	.ingredients-list.open {
 		height: 250px;
 	}
-
 
 	/*****Appliance*******/
 
-	.appliance-wrapper.open-appliance{
+	.appliance-wrapper.open-appliance {
 		width: 100%;
 		height: 340px;
-
 	}
 
-	.appliance-list.open{
+	.appliance-list.open {
 		height: 290px;
 	}
 
-
-
-
-
-
 	/*****Ustensils******/
 
-	.ustensils-wrapper.open-ustensils{
+	.ustensils-wrapper.open-ustensils {
 		width: 100%;
 		height: 320px;
-
 	}
 
-	.ustensils-list.open{
+	.ustensils-list.open {
 		height: 250px;
 	}
-
-
-
-
-
-
 }

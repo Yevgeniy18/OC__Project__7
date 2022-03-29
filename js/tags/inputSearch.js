@@ -1,8 +1,16 @@
 class TagInputSearch {
 	constructor(data) {
-		this.ingredientsList = data.ingredients;
-		this.applianceList = data.appliance;
-		this.ustensilsList = data.ustensils;
+		this.data = data.recipes;
+
+		this.ingredientsList = [];
+		this.applianceList = [];
+		this.ustensilsList = [];
+
+		this.data.filter((recipe) => recipe.ingredients.map((elt) => this.ingredientsList.push(elt.ingredient)));
+		this.data.filter((recipe) => recipe.ustensils.map((ustensil) => this.ustensilsList.push(ustensil)));
+		this.data.filter((recipe) => this.applianceList.push(recipe.appliance));
+
+		// this.applianceList.push(this.data.appliance)
 
 		//input fields
 		this.inputForIngredients = document.querySelector('.input__field__ingredients');
@@ -12,7 +20,7 @@ class TagInputSearch {
 		// containers
 
 		this.ingredientsContainer = document.querySelector('.ingredients-list');
-		this.applianceContainer = document.querySelector('.appliance-list');
+		this.applianceContainer = document.querySelector('.appliance-list');	
 		this.ustensilsContainer = document.querySelector('.ustensils-list');
 
 		// Searched
@@ -21,89 +29,116 @@ class TagInputSearch {
 		this.searchedUstensils = '';
 	}
 
+	// addingTagsForSearch(){
+
+	// 	console.log("adding")
+	// 	let selectedList = []
+
+	// 	const addToList = (e) => {
+
+	// 		const tag = e.target.innerHTML
+	// 		selectedList.push(tag)
+	// 		console.log(selectedList)
+
+	// 	}
+
+
+
+
+
+	// 	for (let tag of this.ingredientsContainer.children){
+	// 		tag.addEventListener('click', addToList)
+	// 	}
+
+	// 	for (let tag of this.applianceContainer.children){
+	// 		tag.addEventListener('click', addToList )
+	// 	}
+		
+	// 	for (let tag of this.ustensilsContainer.children){
+	// 		tag.addEventListener('click', addToList )
+	// 	}
+		
+
+
+
+
+
+	// }
+
 	searchOnInput() {
 		const resultsIngredients = (e) => {
 			this.searchedIngredient = e.target.value;
 
-			let filteredArray = [];
+			let filteredIngredients = [];
 
 			for (let i = 0; i < this.ingredientsList.length; i++) {
 				if (this.ingredientsList[i].trim().toLowerCase().includes(this.searchedIngredient)) {
-					filteredArray.push(this.ingredientsList[i]);
+					filteredIngredients.push(this.ingredientsList[i]);
 				}
 			}
 
+			let normalizedIngredients = removeDuplicates(filteredIngredients);
+
 			const filteredData = `
-            ${filteredArray
+            ${normalizedIngredients
 				.map((elt) => {
 					return `<p>${elt.charAt(0).toUpperCase() + elt.slice(1)}</p>`;
 				})
 				.join(' ')}
-
-
-            
-            
             `;
 
 			this.ingredientsContainer.innerHTML = filteredData;
+
+			if(normalizedIngredients){
+				new TagsSection().populateTags()
+			}
 		};
 
-		const applianceResults = (e) => {
+		const resultsAppliance = (e) => {
 			this.searchedAppliance = e.target.value;
 
-			let filteredArray = [];
+			let filteredAppliance = [];
 
 			for (let i = 0; i < this.applianceList.length; i++) {
 				if (this.applianceList[i].trim().toLowerCase().includes(this.searchedAppliance)) {
-					filteredArray.push(this.applianceList[i]);
+					filteredAppliance.push(this.applianceList[i]);
 				}
 			}
 
+			let normalizedAppliance = removeDuplicates(filteredAppliance);
+
 			const filteredData = `
-            ${filteredArray
+            ${normalizedAppliance
 				.map((elt) => {
 					return `<p>${elt.charAt(0).toUpperCase() + elt.slice(1)}</p>`;
 				})
 				.join(' ')}
-
-
-            
-            
             `;
 
 			this.applianceContainer.innerHTML = filteredData;
-		};
 
-		const ustensilsResults = (e) => {
-			this.searchedUstensils = e.target.value;
-
-			let filteredArray = [];
-
-			for (let i = 0; i < this.ustensilsList.length; i++) {
-				if (this.ustensilsList[i].trim().toLowerCase().includes(this.searchedUstensils)) {
-					filteredArray.push(this.ustensilsList[i]);
-				}
+			if(normalizedAppliance){
+				this.addingTagsForSearch()
 			}
 
-			const filteredData = `
-            ${filteredArray
-				.map((elt) => {
-					return `<p>${elt.charAt(0).toUpperCase() + elt.slice(1)}</p>`;
-				})
-				.join(' ')}
 
 
-            
-            
-            `;
 
-			this.ustensilsContainer.innerHTML = filteredData;
+
 		};
+
+
+
+
+		const resultsUstensils = (e) => {};
 
 		this.inputForIngredients.addEventListener('input', resultsIngredients);
 
-		this.inputForAppliance.addEventListener('input', applianceResults);
+		this.inputForAppliance.addEventListener('input', resultsAppliance);
 
-		this.inputForUstensils.addEventListener('input', ustensilsResults);
+		this.inputForUstensils.addEventListener('input', resultsUstensils);
 	}
+
+
+	
 }

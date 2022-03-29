@@ -11,7 +11,7 @@ class Api {
 	}
 }
 
-class DishesApi extends Api {
+class RecipesApi extends Api {
 	/****
      * @param{string} url
      */

@@ -29,11 +29,11 @@
       </div>
     </div>
 
-
     <!-- Selected Tags Container -->
     <div id="selected-tags" class="selected-tags"></div>
+    <!--  -->
 
-    <!-- Tags Wrapper -->
+    <!-- Tags Wrappers -->
     <div class="tags-wrapper">
       <div class="ingredients-wrapper">
         <div class="select-drop">
@@ -43,8 +43,7 @@
               placeholder="Rechercher un ingredient" />
             <div id="ingredient-arrow" class="arrow"></div>
           </div>
-          <div class="ingredients-list">
-          </div>
+          <div class="ingredients-list"></div>
         </div>
       </div>
 
@@ -57,11 +56,7 @@
             <input maxlength="25" type="text" class="input__field__appliance" placeholder="Rechercher un appareil" />
             <div id="appliance-arrow" class="arrow"></div>
           </div>
-
-          <div class="appliance-list">
-
-          </div>
-
+          <div class="appliance-list"></div>
         </div>
       </div>
 
@@ -74,59 +69,59 @@
             <input maxlength="25" type="text" class="input__field__ustensils" placeholder="Rechercher un unstensil" />
             <div id="ustensils-arrow" class="arrow"></div>
           </div>
-          <div class="ustensils-list">
-
-          </div>
+          <div class="ustensils-list"></div>
         </div>
       </div>
     </div>
     </div>
+    <!--  -->
 
     <!-- Main Recipe Wrapper -->
     <div class="recipe-wrapper"></div>
+    <!--  -->
+
 
     <!-- JS scripts -->
 
-    <!-- Tags Data -->
-    <script src="./js/searchAdvance/removingTags.js"></script>
-    <script src="./js/searchAdvance/displayTags.js"></script>
-
+    <!-- Display Tags -->
+    <script src="./js/tagsDisplay/displayRemainder.js"></script>
+    <script src="./js/tagsDisplay/displaySelected.js"></script>
     <!-- Tags -->
     <script src="./js/tags/tagsArea.js"></script>
-    <script src="js/tags/dropDowns.js"></script>
-    <script src="./js/tags/displaySelected.js"></script>
-    <script src="./js/tags/displayRemainder.js"></script>
     <script src="./js/tags/inputSearch.js"></script>
-    <script src="./js/tags/tagHandler.js"></script>
+    <script src="./js/tags/tagBoxes.js"></script>
 
-    <!-- Message -->
+
+    <!-- DropDown Menu -->
+    <script src="./js/dropDowns/dropDowns.js"></script>
+
+
+    <!-- Error Message -->
     <script src="./js/helpers/message.js"></script>
 
     <!-- Helpers -->
-    <script src="./js/helpers/duplicatesRemoved.js"></script>
     <script src="./js/helpers/removeAccents.js"></script>
     <script src="./js/helpers/removeSpace.js"></script>
     <script src="./js/helpers/uniqueItems.js"></script>
 
-    <!-- Models -->
-    <script src="./js/models/Recipe.js"></script>
-    <script src="./js/models/TagElements.js"></script>
+    <!-- Advanced Search -->
+    <script src="./js/components/advancedSearch/searchOnTag.js"></script>
+    <script src="./js/components/advancedSearch/SearchRemainder.js"></script>
 
-    <!-- Search -->
-    <script src="./js/search/SearchOnInput.js"></script>
-    <script src="./js/search/searchOnTag.js"></script>
-    <script src="./js/search/searchRemainder.js"></script>
 
-  
+    <!-- Main Search -->
+    <script src="./js/components/mainSearch/SearchOnInput.js"></script>
 
     <!-- Templtate Card -->
     <script src="./js/template/RecipeCard.js"></script>
 
+    <!-- Models -->
+    <script src="./js/models/Recipe.js"></script>
+
     <!-- API -->
-    <script src="./js/api/getDishesData.js"></script>
+    <script src="./js/api/recipesData.js"></script>
 
-
-    <!-- Main File -->
+    <!-- Initializing app -->
     <script src="./js/main.js"></script>
   </header>
 

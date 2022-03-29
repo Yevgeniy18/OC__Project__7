@@ -1,6 +1,6 @@
 class App {
 	constructor() {
-		this.recipesApi = new DishesApi('./data/plats.json');
+		this.recipesApi = new RecipesApi('./data/plats.json');
 		this.recipeWrapper = document.querySelector('.recipe-wrapper');
 	}
 
@@ -17,10 +17,11 @@ class App {
 		new RecipesList(RecipesData).onInputSearch();
 
 		// Dropdowns
-		new ExpandingContainers().handleTagDropDowns();
+		new ExpandingContainers(RecipesData).handleTagDropDowns();
 
 		// Advanced Search
 		new TagsSection(RecipesData).populateTags(RecipesData);
+	
 	}
 }
 

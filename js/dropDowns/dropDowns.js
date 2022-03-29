@@ -1,15 +1,16 @@
 class ExpandingContainers {
-	constructor() {
-		
-		// Arrows 
-		this.ingredientArrow = document.getElementById('ingredient-arrow')
-		this.applianceArrow = document.getElementById('appliance-arrow')
-		this.ustensilsArrow = document.getElementById('ustensils-arrow')
+	constructor(data) {
+		this.recipes = data;
+
+		// Arrows
+		this.ingredientArrow = document.getElementById('ingredient-arrow');
+		this.applianceArrow = document.getElementById('appliance-arrow');
+		this.ustensilsArrow = document.getElementById('ustensils-arrow');
 
 		// Containers
-		this.ingredientContainer = document.querySelector('.ingredients-list')
-		this.applianceContainer = document.querySelector('.appliance-list')
-		this.ustensilsContainer = document.querySelector('.ustensils-list')
+		this.ingredientContainer = document.querySelector('.ingredients-list');
+		this.applianceContainer = document.querySelector('.appliance-list');
+		this.ustensilsContainer = document.querySelector('.ustensils-list');
 
 		/****Triggers***/
 		this.ingredientTrigger = document.querySelector('.ingredients-trigger');
@@ -35,36 +36,34 @@ class ExpandingContainers {
 
 	handleTagDropDowns() {
 		const handleIngredients = () => {
-	
 			this.ingredientTrigger.classList.toggle('open');
 			this.ingredients.classList.toggle('open-ingredients');
 			this.tagIngredients.classList.toggle('open');
 			this.inputFieldIngredients.classList.toggle('open');
-			this.ingredientContainer.classList.toggle('open')
-
+			this.ingredientContainer.classList.toggle('open');
+			// new TagInputSearch({ recipes: this.recipes }).searchOnInput();
 		};
 
 		this.ingredientArrow.addEventListener('click', handleIngredients);
 
 		const handleAppliances = () => {
-	
 			this.toolsTrigger.classList.toggle('open');
 			this.tools.classList.toggle('open-appliance');
 			this.tagTools.classList.toggle('open');
 			this.inputFieldTools.classList.toggle('open');
-			this.applianceContainer.classList.toggle('open')
+			this.applianceContainer.classList.toggle('open');
+			// new TagInputSearch({ recipes: this.recipes }).searchOnInput();
 		};
 
 		this.applianceArrow.addEventListener('click', handleAppliances);
 
 		const handleUstensils = () => {
-
-		
 			this.ustensils.classList.toggle('open-ustensils');
 			this.ustensilsTrigger.classList.toggle('open');
 			this.tagUstensils.classList.toggle('open');
 			this.inputFieldIUstensils.classList.toggle('open');
-			this.ustensilsContainer.classList.toggle('open')
+			this.ustensilsContainer.classList.toggle('open');
+			// new TagInputSearch({ recipes: this.recipes }).searchOnInput();
 		};
 
 		this.ustensilsArrow.addEventListener('click', handleUstensils);
