@@ -291,7 +291,7 @@ header {
 
 .ingredients-wrapper.open-ingredients {
 	width: 550px;
-	border-radius: 0px;
+	border-radius: 5px 5px 0 0;
 }
 
 .select-drop {
@@ -317,7 +317,7 @@ header {
 }
 
 .ingredients-trigger.open {
-	border-radius: 0px;
+	border-radius: 5px 5px 0 0;
 }
 
 .ingredients-list {
@@ -752,6 +752,7 @@ header {
 	display: flex;
 	align-items: center;
 	padding: 7px;
+		
 }
 
 .ingredientTag button {
@@ -764,6 +765,7 @@ header {
 	color: #fff;
 	cursor: pointer;
 	margin-left: 1rem;
+
 }
 
 .applianceTag {
@@ -817,4 +819,53 @@ header {
 		margin: 0.5rem;
 		width: 100%;
 	}
+
+	/***Ingredients**/
+
+
+	.ingredients-wrapper.open-ingredients{
+		width: 100%;
+		height: 300px;
+
+	}
+
+	.ingredients-list.open{
+		height: 250px;
+	}
+
+
+	/*****Appliance*******/
+
+	.appliance-wrapper.open-appliance{
+		width: 100%;
+		height: 340px;
+
+	}
+
+	.appliance-list.open{
+		height: 290px;
+	}
+
+
+
+
+
+
+	/*****Ustensils******/
+
+	.ustensils-wrapper.open-ustensils{
+		width: 100%;
+		height: 320px;
+
+	}
+
+	.ustensils-list.open{
+		height: 250px;
+	}
+
+
+
+
+
+
 }

@@ -32,11 +32,9 @@ class RecipesList {
 
 		if (filteredRes.length > 1) {
 			new TagsSection(this.recipes).populateTagsReaminder(filteredRes);
-		}
+		} 
 
-		if (filteredRes.length === 0) {
-			new TagsSection(this.recipes).populateTags();
-		}
+
 
 		filteredRes.forEach((recipe) => {
 			const Template = new RecipeCard(recipe);
@@ -78,12 +76,17 @@ class RecipesList {
 				this.ShowAvailbaleRecipes();
 			} else if (this.searchedRecipe.length < 3) {
 				this.ShowInitialList();
-			}
+			} 
 
 			if (!requestHasWord && this.searchedRecipe.length > 15) {
 				new Message().notFound();
 			} else {
 				new Message().initial();
+			}
+
+
+			if(this.searchedRecipe.length === 0){
+				new TagsSection(this.recipes).populateTags(this.recipes)
 			}
 		});
 	}
