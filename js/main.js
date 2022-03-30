@@ -1,28 +1,27 @@
 class App {
 	constructor() {
-		this.recipesApi = new DishesApi('/data/plats.json');
+		this.recipesApi = new RecipesApi('./data/plats.json');
 		this.recipeWrapper = document.querySelector('.recipe-wrapper');
 	}
 
 	async run() {
-		/*****Recipes Data From Json*****/
+		// Data
 		const RecipesData = await this.recipesApi.get();
 
-		/*****Initial List of recipes */
+		// Recipes List
 		RecipesData.map((recipe) => new Recipe(recipe)).forEach((recipe) => {
 			const Template = new RecipeCard(recipe);
 			this.recipeWrapper.appendChild(Template.createRecipeCard());
 		});
-
-		/***Filtered List of Recipes***/
-
+		// Main Search
 		new RecipesList(RecipesData).onInputSearch();
 
-		/****Dropdowns****/
-		new ExpandingContainers().handleTagDropDowns();
+		// Dropdowns
+		new ExpandingContainers(RecipesData).handleTagDropDowns();
 
-		/***Tags**/
-		new Ingredients(RecipesData).populateIngredients();
+		// Advanced Search
+		new TagsSection(RecipesData).populateTags(RecipesData);
+	
 	}
 }
 

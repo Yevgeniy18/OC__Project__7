@@ -1,7 +1,4 @@
 class Api {
-	/****
-     * @param{string} url
-     */
 	constructor(url) {
 		this._url = url;
 	}
@@ -14,7 +11,7 @@ class Api {
 	}
 }
 
-class DishesApi extends Api {
+class RecipesApi extends Api {
 	/****
      * @param{string} url
      */

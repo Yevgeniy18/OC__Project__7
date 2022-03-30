@@ -1,5 +1,0 @@
-class SelectedTags{
-    constructor(data){
-        
-    }
-}
