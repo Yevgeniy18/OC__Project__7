@@ -41,7 +41,6 @@ class ExpandingContainers {
 			this.tagIngredients.classList.toggle('open');
 			this.inputFieldIngredients.classList.toggle('open');
 			this.ingredientContainer.classList.toggle('open');
-			// new TagInputSearch({ recipes: this.recipes }).searchOnInput();
 		};
 
 		this.ingredientArrow.addEventListener('click', handleIngredients);
@@ -52,7 +51,6 @@ class ExpandingContainers {
 			this.tagTools.classList.toggle('open');
 			this.inputFieldTools.classList.toggle('open');
 			this.applianceContainer.classList.toggle('open');
-			// new TagInputSearch({ recipes: this.recipes }).searchOnInput();
 		};
 
 		this.applianceArrow.addEventListener('click', handleAppliances);
@@ -63,7 +61,6 @@ class ExpandingContainers {
 			this.tagUstensils.classList.toggle('open');
 			this.inputFieldIUstensils.classList.toggle('open');
 			this.ustensilsContainer.classList.toggle('open');
-			// new TagInputSearch({ recipes: this.recipes }).searchOnInput();
 		};
 
 		this.ustensilsArrow.addEventListener('click', handleUstensils);
