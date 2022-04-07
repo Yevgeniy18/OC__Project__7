@@ -10,13 +10,13 @@ class RecipeCard {
 	}
 
 	createRecipeCard() {
-		this.ingredients.forEach((item) =>
-			Object.keys(item).forEach((key) => {
-				if (item[key] === null || item[key] === undefined) {
-					delete item[key];
-				}
-			})
-		);
+		// this.ingredients.forEach((item) =>
+		// 	Object.keys(item).forEach((key) => {
+		// 		if (item[key] === null || item[key] === undefined) {
+		// 			delete item[key];
+		// 		}
+		// 	})
+		// );
 
 		
 
