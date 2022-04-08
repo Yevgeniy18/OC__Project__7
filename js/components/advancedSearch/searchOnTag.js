@@ -25,7 +25,7 @@ class SearchOnTag {
 							ingredient.ingredient.includes(this.selectedList[tag])
 						) ||
 						this.recipes[i].appliance === this.selectedList[tag] ||
-						this.recipes[i].ustensils.find((elt) => elt.includes(this.selectedList[tag]))
+						this.recipes[i].ustensils.find((elt) => elt.toLowerCase().includes(this.selectedList[tag].toLowerCase()))
 					) {
 						listFiltered.push(this.recipes[i]);
 						

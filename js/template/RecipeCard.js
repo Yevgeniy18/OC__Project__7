@@ -38,7 +38,7 @@ class RecipeCard {
 				<div class="inline-ingredients">
 				<p class="first"> ${ elt.ingredient }:</p> 
 				</br>
-				<p>${elt.quantity} </p>
+				<p> ${ elt.quantity}</p>
 				<p>${ elt.unit && elt.unit.includes("grammes".toLowerCase().trim())
 					? elt.unit.slice(0,1)
 				:elt.unit.toLowerCase().trim().includes("cl".toLowerCase().trim())

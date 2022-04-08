@@ -2,7 +2,6 @@ class SearchRemainder {
 	constructor(data) {
 		this.selectedList = data.selected;
 		this.remainingData = data.recipes;
-
 		this.recipesWrapper = document.querySelector('.recipe-wrapper');
 	}
 
@@ -24,7 +23,9 @@ class SearchRemainder {
 							ingredient.ingredient.includes(this.selectedList[tag])
 						) ||
 						this.remainingData[i].appliance === this.selectedList[tag] ||
-						this.remainingData[i].ustensils.find((elt) => elt.includes(this.selectedList[tag]))
+						this.remainingData[i].ustensils.find((elt) =>
+							elt.toLowerCase().includes(this.selectedList[tag].toLowerCase())
+						)
 					) {
 						listFiltered.push(this.remainingData[i]);
 					}
