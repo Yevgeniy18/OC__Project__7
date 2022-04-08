@@ -46,26 +46,32 @@ class TagsSection {
 		// Populating Tag containers with data bein properly formatted
 
 		this.recipes.filter((recipe) => {
-			recipe.ingredients.map((ingredient) => ingredientsList.push(ingredient.ingredient));
+			recipe.ingredients.map((ingredient) =>
+				ingredientsList.push(
+					ingredient.ingredient.charAt(0).toUpperCase() + ingredient.ingredient.toLowerCase().slice(1)
+				)
+			);
 		});
 
 		normalizedIngredients = removeDuplicates(ingredientsList);
-
 		const ingredientsData = ` ${normalizedIngredients
-			.map((appliance) => {
-				return `<p>${appliance.charAt(0).toUpperCase() + appliance.slice(1)}</p>`;
+			.map((ingredient) => {
+				return `<p>${ingredient}</p>`;
 			})
 			.join(' ')}
 			`;
 
 		this.ingredientContainer.innerHTML = ingredientsData;
 
-		this.recipes.filter((recipe) => applianceList.push(recipe.appliance));
+		this.recipes.filter((recipe) =>
+			applianceList.push(recipe.appliance.charAt(0).toUpperCase() + recipe.appliance.toLowerCase().slice(1))
+		);
+
 		normalizedAppliance = removeDuplicates(applianceList);
 
 		const applianceData = ` ${normalizedAppliance
 			.map((appliance) => {
-				return `<p>${appliance.charAt(0).toUpperCase() + appliance.slice(1)}</p>`;
+				return `<p>${appliance && appliance.replace('.', '')}</p>`;
 			})
 			.join(' ')}
 			`;
@@ -73,14 +79,14 @@ class TagsSection {
 		this.applianceContainer.innerHTML = applianceData;
 
 		this.recipes.filter((recipe) => {
-			recipe.ustensils.map((ustensil) => ustensilsList.push(ustensil));
+			recipe.ustensils.map((ustensil) => ustensilsList.push(ustensil.replace('.', '')));
 		});
 
 		normalizedUstensils = removeDuplicates(ustensilsList);
 
 		const ustensilData = ` ${normalizedUstensils
 			.map((ustensil) => {
-				return `<p>${ustensil.charAt(0).toUpperCase() + ustensil.slice(1)}</p>`;
+				return `<p>${ustensil.charAt(0).toUpperCase() + ustensil.toLowerCase().slice(1)}</p>`;
 			})
 			.join(' ')}
 			`;
@@ -185,7 +191,7 @@ class TagsSection {
 		this.inputForUstensils.addEventListener('input', ustensilsInput);
 	}
 
-	populateTagsReaminder(data) {
+	populateTagsRemainder(data) {
 		// Recipes Data
 		let remainderData = data;
 
@@ -244,14 +250,14 @@ class TagsSection {
 		this.applianceContainer.innerHTML = applianceData;
 
 		remainderData.filter((recipe) => {
-			recipe.ustensils.map((ustensil) => ustensilsList.push(ustensil));
+			recipe.ustensils.map((ustensil) => ustensilsList.push(ustensil.charAt(0).toLowerCase() + ustensil.toLowerCase().slice(1)));
 		});
 
 		normalizedUstensils = removeDuplicates(ustensilsList);
 
 		const ustensilData = ` ${normalizedUstensils
 			.map((ustensil) => {
-				return `<p >${ustensil.charAt(0).toUpperCase() + ustensil.slice(1)}</p>`;
+				return `<p >${ustensil}</p>`;
 			})
 			.join(' ')}
 				`;

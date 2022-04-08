@@ -13,17 +13,19 @@ class DisplaySelectedTags {
 		let ingredientsList = [];
 		let appliance = [];
 		let ustensilList = [];
-		this.recipes.filter((recipe) => recipe.ingredients.map((elt) => ingredientsList.push(elt.ingredient)));
-		this.recipes.filter((recipe) => recipe.ustensils.map((elt) => ustensilList.push(elt)));
-		this.recipes.filter((recipe) => appliance.push(recipe.appliance));
+		this.recipes.filter((recipe) =>
+			recipe.ingredients.map((elt) => ingredientsList.push(elt.ingredient.toLowerCase()))
+		);
+		this.recipes.filter((recipe) => recipe.ustensils.map((elt) => ustensilList.push(elt.toLowerCase())));
+		this.recipes.filter((recipe) => appliance.push(recipe.appliance.toLowerCase()));
 
 		const listedTags = `${this.selectedTags
 			.map((elt) => {
-				return `  <p class=${ustensilList.includes(elt)
+				return `  <p class=${ustensilList.includes(elt.toLowerCase())
 					? 'ustensilsTag'
-					: appliance.includes(elt)
+					: appliance.includes(elt.toLowerCase())
 						? 'applianceTag'
-						: ingredientsList.includes(elt)
+						: ingredientsList.includes(elt.toLowerCase())
 							? 'ingredientTag'
 							: 'noTag'}>${elt} <button> <i class="fa-solid fa-xmark"></i></button></p>`;
 			})

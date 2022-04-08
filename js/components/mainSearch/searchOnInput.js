@@ -14,21 +14,38 @@ class RecipesList {
 
 		let flattenedData = flatten(this.recipes);
 
+		// Array of filtered items
 		let filteredArray = [];
 
+		// Filtering process based on what was entered into the input field
+
 		let filteredItems = flattenedData.filter((elt) =>
-			elt.trim().toLowerCase().includes(this.searchedRecipe.trim().toLowerCase())
+			removeAccents(elt).trim().toLowerCase().includes(this.searchedRecipe.trim().toLowerCase())
 		);
+
+		// Checking whether the original data items match the filtered items
+		// and then pushing to the filtered Array defined above
 
 		for (let i = 0; i < this.recipes.length; i++) {
 			for (let j = 0; j < filteredItems.length; j++) {
-				if (this.recipes[i].name === filteredItems[j] || this.recipes[i].description === filteredItems[j]) {
+				if (
+					this.recipes[i].name === filteredItems[j] ||
+					this.recipes[i].description === filteredItems[j] ||
+					this.recipes[i].ingredients.find((elt) => elt.ingredient === filteredItems[j])
+				) {
 					filteredArray.push(this.recipes[i]);
 				}
 			}
 		}
 
-		filteredArray.forEach((recipe) => {
+		if(filteredArray.length > 1 ){
+			new TagsSection(this.recipes).populateTagsRemainder(filteredArray)
+		}
+
+		// Once the matched results are pushed into the FilteredArray,
+		//forEach method is applied to build up the desired template
+
+		removeDuplicates(filteredArray).forEach((recipe) => {
 			const Template = new RecipeCard(recipe);
 			this.recipesWrapper.appendChild(Template.createRecipeCard());
 		});
@@ -50,19 +67,12 @@ class RecipesList {
 			// Checking if the searched recipe contains a result
 			// if not, an error message will be displayed in the main section
 
-			// const doesContainWord = () => {
-			// 	let result = [];
+			let flattenedData = flatten(this.recipes);
 
-			// 	this.recipes.forEach((recipe) => {
-			// 		recipe.ingredients.map((elt) => result.push(removeAccents(elt.ingredient).toLowerCase().trim())) &&
-			// 			result.push(removeAccents(recipe.name.toLowerCase().trim())) &&
-			// 			result.push(removeAccents(recipe.description.toLowerCase().trim()));
-			// 	});
-
-			// 	return result;
-			// };
-
-			// let requestHasWord = doesContainWord().includes(this.searchedRecipe.trim().toLowerCase());
+			let requestHasWord = flattenedData.find((elt) =>
+				elt.trim().toLowerCase().includes(this.searchedRecipe.trim().toLowerCase())
+			);
+		
 
 			if (this.searchedRecipe.length > 3) {
 				this.ShowAvailbaleRecipes();
@@ -70,7 +80,12 @@ class RecipesList {
 				this.ShowInitialList();
 			}
 
-		
+			if (!requestHasWord && this.searchedRecipe.length > 15) {
+				new Message().notFound();
+			} else {
+				new Message().initial();
+			}
+
 			if (this.searchedRecipe.length === 0) {
 				new TagsSection(this.recipes).populateTags(this.recipes);
 			}
