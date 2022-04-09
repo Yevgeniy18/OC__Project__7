@@ -10,12 +10,10 @@ class RecipesList {
 	ShowAvailbaleRecipes() {
 		this.recipesWrapper.innerHTML = '';
 
-		// Flattening the array to get a faster search through each object
-
+		// Getting the transformed array
 		let flattenedData = flattenEachObject(this.recipes);
-		console.log(flattenedData);
 
-		// Array of filtered itemsrecipe.combinedItems
+		// Filtering array according to user input
 		let filteredArray = flattenedData.filter((recipe) =>
 			recipe.combinedItems.find((elt) =>
 				removeAccents(removeSpace(elt))
@@ -25,6 +23,7 @@ class RecipesList {
 			)
 		);
 
+		// Removing duplicates and applying rendering visually
 		removeDuplicates(filteredArray).forEach((recipe) => {
 			const Template = new RecipeCard(recipe);
 			this.recipesWrapper.appendChild(Template.createRecipeCard());
@@ -58,6 +57,8 @@ class RecipesList {
 			} else if (this.searchedRecipe.length < 3) {
 				this.ShowInitialList();
 			}
+
+			// If user enters more than 15 characters and the input content doesnt match any results, display the initial results
 
 			if (!requestHasWord && this.searchedRecipe.length > 15) {
 				new Message().notFound();
