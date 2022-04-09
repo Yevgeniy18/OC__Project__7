@@ -1,6 +1,6 @@
 # OpenClassroom Project 7
 
-### Developer un algorithme de recherche [Application demo](https://easterling24.github.io/YevgeniyGupalo__P7__050222/)
+### Objective: Develop a searching algorithm  [Application demo](https://easterling24.github.io/YevgeniyGupalo__P7__050222/)
 
 ## Algorithm 1
 
