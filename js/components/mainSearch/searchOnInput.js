@@ -12,38 +12,18 @@ class RecipesList {
 
 		// Flattening the array to get a faster search through each object
 
-		let flattenedData = flatten(this.recipes);
+		let flattenedData = flattenEachObject(this.recipes);
+		console.log(flattenedData);
 
-		// Array of filtered items
-		let filteredArray = [];
-
-		// Filtering process based on what was entered into the input field
-
-		let filteredItems = flattenedData.filter((elt) =>
-			removeAccents(elt).trim().toLowerCase().includes(this.searchedRecipe.trim().toLowerCase())
+		// Array of filtered itemsrecipe.combinedItems
+		let filteredArray = flattenedData.filter((recipe) =>
+			recipe.combinedItems.find((elt) =>
+				removeAccents(removeSpace(elt))
+					.trim()
+					.toLowerCase()
+					.includes(removeSpace(this.searchedRecipe).trim().toLowerCase())
+			)
 		);
-
-		// Checking whether the original data items match the filtered items
-		// and then pushing to the filtered Array defined above
-
-		for (let i = 0; i < this.recipes.length; i++) {
-			for (let j = 0; j < filteredItems.length; j++) {
-				if (
-					this.recipes[i].name === filteredItems[j] ||
-					this.recipes[i].description === filteredItems[j] ||
-					this.recipes[i].ingredients.find((elt) => elt.ingredient === filteredItems[j])
-				) {
-					filteredArray.push(this.recipes[i]);
-				}
-			}
-		}
-
-		if(filteredArray.length > 1 ){
-			new TagsSection(this.recipes).populateTagsRemainder(filteredArray)
-		}
-
-		// Once the matched results are pushed into the FilteredArray,
-		//forEach method is applied to build up the desired template
 
 		removeDuplicates(filteredArray).forEach((recipe) => {
 			const Template = new RecipeCard(recipe);
@@ -72,7 +52,6 @@ class RecipesList {
 			let requestHasWord = flattenedData.find((elt) =>
 				elt.trim().toLowerCase().includes(this.searchedRecipe.trim().toLowerCase())
 			);
-		
 
 			if (this.searchedRecipe.length > 3) {
 				this.ShowAvailbaleRecipes();

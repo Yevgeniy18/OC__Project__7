@@ -290,7 +290,7 @@ header {
 }
 
 .ingredients-wrapper.open-ingredients {
-	width: 550px;
+	width: 1200px;
 	border-radius: 5px 5px 0 0;
 }
 
@@ -595,7 +595,7 @@ header {
 }
 
 .ustensils-wrapper.open-ustensils {
-	width: 400px;
+	width: 600px;
 }
 
 .tag__name__ustensils.open {
@@ -621,7 +621,7 @@ header {
 	animation: grow-down 300ms ease-in-out both;
 	transform-origin: top center;
 	background-color: #ed6454;
-	overflow-x: scroll;
+	/* overflow-x: scroll; */
 	scroll-behavior: smooth;
 	padding: 10px;
 	z-index: 2;
@@ -664,7 +664,7 @@ header {
 
 /***Scroll Bar***/
 
-.ustensils-list::-webkit-scrollbar-track {
+/* .ustensils-list::-webkit-scrollbar-track {
 	background-color: #ed6454;
 	border-radius: 0 0 20px 20px;
 }
@@ -675,7 +675,7 @@ header {
 .ustensils-list::-webkit-scrollbar-thumb {
 	background: #101e35;
 	border-radius: 20px;
-}
+} */
 
 /***Arrows***/
 
