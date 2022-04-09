@@ -23,6 +23,10 @@ class RecipesList {
 			)
 		);
 
+		if(filteredArray.length >1){
+			new TagsSection(this.recipes).populateTagsRemainder(filteredArray)
+		}
+
 		// Removing duplicates and applying rendering visually
 		removeDuplicates(filteredArray).forEach((recipe) => {
 			const Template = new RecipeCard(recipe);

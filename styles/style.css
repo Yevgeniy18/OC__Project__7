@@ -209,13 +209,49 @@ header {
 	border-radius: 10px;
 }
 
+/****Selected Tags ****/ 
+
+.selected-wrapper{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.clear-tags{
+	opacity: 0;
+	display: none;
+	border: none;
+	background-color: #101e35;
+	color: white;
+	padding: 8px;
+	font-size: 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 1rem;
+}
+
+
+
+.clear-tags.appear-clear{
+	opacity: 1;
+	display: block;
+
+}
+
 .selected-tags {
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
 	flex-wrap: wrap;
 	width: 100%;
-	margin: 1rem 0;
+	padding: 0 0.5rem;
+	margin: 1rem 0 0.5rem 0;
+}
+
+.selected-tags.appear{
+	margin: 0;
 }
 
 .selected-tags p {
@@ -262,7 +298,7 @@ header {
 
 .tags-wrapper {
 	display: flex;
-	margin-bottom: 2rem;
+	margin: 1.5 0rem;
 	padding-left:  0.5rem;
 }
 

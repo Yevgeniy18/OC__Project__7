@@ -191,6 +191,12 @@ class TagsSection {
 		this.inputForUstensils.addEventListener('input', ustensilsInput);
 	}
 
+	/*****************************************************************
+	 ****************************************************************/
+
+	/*****************************************************************
+	 ****************************************************************/
+
 	populateTagsRemainder(data) {
 		// Recipes Data
 		let remainderData = data;
@@ -250,7 +256,9 @@ class TagsSection {
 		this.applianceContainer.innerHTML = applianceData;
 
 		remainderData.filter((recipe) => {
-			recipe.ustensils.map((ustensil) => ustensilsList.push(ustensil.charAt(0).toLowerCase() + ustensil.toLowerCase().slice(1)));
+			recipe.ustensils.map((ustensil) =>
+				ustensilsList.push(ustensil.charAt(0).toLowerCase() + ustensil.toLowerCase().slice(1))
+			);
 		});
 
 		normalizedUstensils = removeDuplicates(ustensilsList);

@@ -7,6 +7,9 @@ class DisplaySelectedTags {
 		this.ingredientContainer = document.querySelector('.ingredients-list');
 		this.applianceContainer = document.querySelector('.appliance-list');
 		this.ustensilsContainer = document.querySelector('.ustensils-list');
+
+		//Tags button
+		this.clearButton = document.querySelector('.clear-tags');
 	}
 
 	listingTags() {
@@ -33,12 +36,19 @@ class DisplaySelectedTags {
 		`;
 		this.selectedArea.innerHTML = listedTags;
 
+		if (this.selectedTags.length <= 3) {
+			this.clearButton.classList.remove('appear-clear');
+		}
+
 		const removeTag = (e) => {
 			const tag = e.target.parentNode.parentNode.textContent;
 
 			for (let i = 0; i < this.selectedTags.length; i++) {
 				if (this.selectedTags[i] === tag.trim()) {
 					this.selectedTags.splice(i, 1);
+					if (this.selectedTags.length <= 3) {
+						this.clearButton.classList.remove('appear-clear');
+					}
 				}
 			}
 
