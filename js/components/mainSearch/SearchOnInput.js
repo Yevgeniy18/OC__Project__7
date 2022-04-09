@@ -31,7 +31,7 @@ class RecipesList {
 		// Adding advanced searches funtionality for the remaining results after filter
 
 		if (filteredRes.length > 1) {
-			new TagsSection(this.recipes).populateTagsReaminder(filteredRes);
+			new TagsSection(this.recipes).populateTagsRemainder(filteredRes);
 		} 
 
 
