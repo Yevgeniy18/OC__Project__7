@@ -1,4 +1,4 @@
-# OpenClassroom Project 6
+# OpenClassroom Project 7
 
 ### Developer un algorithme de recherche [Application demo](https://easterling24.github.io/YevgeniyGupalo__P7__050222/)
 
