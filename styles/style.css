@@ -62,8 +62,8 @@ header {
 	margin-top: 1rem;
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
-
+	justify-content: flex-start;
+	flex-direction: row;
 	align-items: center;
 	flex-wrap: wrap;
 }
@@ -72,12 +72,12 @@ header {
 	height: 364px;
 	width: 380px;
 	background: #e7e7e7;
-	margin: 0 0 2em 0;
-	/* margin: 1rem 0 1rem 0; */
+	margin: 1rem 0.5rem;
 	display: flex;
 	flex-direction: column;
 	border-radius: 5px;
 	cursor: pointer;
+	padding: 0;
 	transition: all 300ms;
 }
 
@@ -158,6 +158,7 @@ header {
 
 .inline-ingredients {
 	display: flex;
+	align-items: center;
 }
 
 .inline-ingredients p {
@@ -166,6 +167,11 @@ header {
 
 .first {
 	font-weight: 700;
+	text-align: left;
+}
+
+.first.width-fix{
+	width: 91px;
 }
 
 /***Selected Tags Section**/
@@ -257,6 +263,7 @@ header {
 .tags-wrapper {
 	display: flex;
 	margin-bottom: 2rem;
+	padding-left:  0.5rem;
 }
 
 .tags-wrapper input::placeholder {
@@ -290,7 +297,7 @@ header {
 }
 
 .ingredients-wrapper.open-ingredients {
-	width: 1200px;
+	width: 550px;
 	border-radius: 5px 5px 0 0;
 }
 
@@ -621,7 +628,7 @@ header {
 	animation: grow-down 300ms ease-in-out both;
 	transform-origin: top center;
 	background-color: #ed6454;
-	/* overflow-x: scroll; */
+	overflow-x: scroll;
 	scroll-behavior: smooth;
 	padding: 10px;
 	z-index: 2;
@@ -664,18 +671,17 @@ header {
 
 /***Scroll Bar***/
 
-/* .ustensils-list::-webkit-scrollbar-track {
+.ustensils-list::-webkit-scrollbar-track {
 	background-color: #ed6454;
 	border-radius: 0 0 20px 20px;
 }
 .ustensils-list::-webkit-scrollbar {
 	height: 15px;
 }
-
 .ustensils-list::-webkit-scrollbar-thumb {
 	background: #101e35;
 	border-radius: 20px;
-} */
+}
 
 /***Arrows***/
 

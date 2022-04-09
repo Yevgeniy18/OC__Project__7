@@ -7,7 +7,7 @@ class Api {
 		return fetch(this._url)
 			.then((response) => response.json())
 			.then((response) => response.recipes)
-			.catch((error) => console.log('an error has occured', error));
+			.catch((error) => console.log('cant fetch data', error));
 	}
 }
 
