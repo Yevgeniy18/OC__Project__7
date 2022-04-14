@@ -2,6 +2,8 @@
 
 ### Objective: Develop a searching algorithm  [Application demo](https://easterling24.github.io/YevgeniyGupalo__P7__050222/)
 
+![Screenshot](Screen-P7.png)
+
 ## Algorithm 1
 
 ## Project installation
