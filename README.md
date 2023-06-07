@@ -1,17 +1,15 @@
-# OpenClassroom Project 7
+# OpenClassroom Project 7: Develop a searching algorithm 
 
-### Objective: Develop a searching algorithm  [Application demo](https://easterling24.github.io/YevgeniyGupalo__P7__050222/)
+## About
+A simple search feature where user can either find results by entering a request into the input field or by selecting items from the toggling lists which are also filters.
+</br>
+ A little bonus though is that searching results could be narroved while increasing number of selected filters
 
-![Screenshot](Screen-P7.png)
-
-## Algorithm 1
+ </br>
+ Check out the [result](https://yevgeniy18.github.io/OC__Project__7/)
 
 ## Project installation
-
-* Start Git bash
 * git clone https://github.com/Easterling24/YevgeniyGupalo__P7__050222.git
+* run Live Server 
 
 
-## Made with
-* [Git](https://git-scm.com/)
-* [Visual Studio Code](https://code.visualstudio.com/) 
