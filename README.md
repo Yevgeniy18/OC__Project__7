@@ -6,10 +6,11 @@ A simple search feature where user can either find results by entering a request
  A little bonus though is that searching results could be narroved while increasing number of selected filters
 
  </br>
+
  Check out the [result](https://yevgeniy18.github.io/OC__Project__7/)
 
 ## Project installation
-* git clone https://github.com/Easterling24/YevgeniyGupalo__P7__050222.git
+* git clone https://github.com/Yevgeniy18/OC__Project__7.git
 * run Live Server 
 
 
